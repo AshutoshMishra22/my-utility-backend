@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import addLink from "./routeCB/addLink.js";
 import getLink from "./routeCB/getLink.js";
+import deleteLink from "./routeCB/deleteLink.js";
 
 const app = express();
 
@@ -28,3 +29,4 @@ app.get("/", (_, res) => {
 
 app.post("/addLink", addLink);
 app.get("/getLink", getLink);
+app.get("/deleteLink", deleteLink);
