@@ -3,9 +3,9 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
-import addLink from "./routeCB/addLink.js";
-import getLink from "./routeCB/getLink.js";
-import deleteLink from "./routeCB/deleteLink.js";
+import addLink from "../routeCB/addLink.js";
+import getLink from "../routeCB/getLink.js";
+import deleteLink from "../routeCB/deleteLink.js";
 
 dotenv.config();
 const app = express();
