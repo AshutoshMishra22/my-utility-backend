@@ -4,8 +4,9 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import addLink from "./routeCB/addLink.js";
-import getLink from "./routeCB/getLink.js";
+import getAllLink from "./routeCB/getAllLink.js";
 import deleteLink from "./routeCB/deleteLink.js";
+import getLink from "./routeCB/getLink.js";
 
 dotenv.config();
 const app = express();
@@ -26,9 +27,10 @@ mongoose
   });
 
 app.get("/", (_, res) => {
-  res.send("Hello");
+  res.send("https://myutilitypwa.netlify.app/");
 });
 
+app.get("/getAllLink", getAllLink);
+app.post("/getLink", getLink);
 app.post("/addLink", addLink);
-app.get("/getLink", getLink);
-app.get("/deleteLink", deleteLink);
+app.delete("/deleteLink", deleteLink);
