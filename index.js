@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
-import { BASE_API } from "./constant.js";
+import { BASE_API, responseMessage } from "./utils/constant.js";
 import versionV1 from "./version/v1.js";
 
 dotenv.config();
@@ -26,3 +26,12 @@ app.get("/", (_, res) => {
 });
 
 app.use(BASE_API, versionV1);
+app.use((err, req, res, next) => {
+  const statusCode = err.statusCode || 500;
+  const message = err.message || responseMessage.internalServerError;
+  return res.status(statusCode).json({
+    success: false,
+    message,
+    status: statusCode,
+  });
+});
