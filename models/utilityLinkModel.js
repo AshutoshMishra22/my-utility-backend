@@ -11,4 +11,7 @@ const utilityLinkSchema = new Schema(
   { timestamps: true }
 );
 
-export const UtilityLinkModel = new model("UtilityModel", utilityLinkSchema);
+export const UtilityLinkModel = new model(
+  "UtilityLinkModel",
+  utilityLinkSchema
+);
