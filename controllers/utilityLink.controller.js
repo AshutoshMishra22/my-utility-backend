@@ -3,7 +3,7 @@ import { UtilityLinkModel } from "../models/utilityLinkModel.js";
 async function addLinkController(req, res) {
   const entryData = new UtilityLinkModel(req.body);
   await entryData.save();
-  getAllLink(req, res);
+  getAllLinkController(req, res);
 }
 async function getAllLinkController(_, res) {
   const updatedData = await UtilityLinkModel.find({});
@@ -23,7 +23,7 @@ async function getLinkController(req, res) {
 async function deleteLinkController(req, res) {
   const { _id } = req.body;
   await UtilityLinkModel.deleteOne({ _id });
-  getAllLink(req, res);
+  getAllLinkController(req, res);
 }
 export {
   addLinkController,

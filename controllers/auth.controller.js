@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import { userModel } from "../models/userModel.js";
 import { responseTemplate } from "../responseTemplate/index.js";
 import { errorHandler } from "../utils/error.js";
-import { responseMessage } from "../utils/constant.js";
+import { JWT_EXPIRY, responseMessage } from "../utils/constant.js";
 
 async function signup(req, res, next) {
   const { username, password, email, linkId, myList } = req.body;
@@ -33,7 +33,7 @@ async function signin(req, res, next) {
       return next(errorHandler(401, responseMessage.errorInvalidCred));
     const jwtToken = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
     const { _id, password: dbPassword, ...userDetails } = validUser._doc;
-    const expiryDate = new Date(Date.now() + 3600000);
+    const expiryDate = new Date(Date.now() + JWT_EXPIRY);
     res
       .cookie("access_token", jwtToken, { httpOnly: true, expires: expiryDate })
       .status(200)
