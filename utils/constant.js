@@ -14,7 +14,7 @@ const responseMessage = {
   somethingWentWrong: "Something went wrong.",
   internalServerError: "Internal Server Error.",
 };
-const JWT_EXPIRY = "100000000";
+const JWT_EXPIRY = 100000000;
 export {
   JWT_EXPIRY,
   BASE_API,
